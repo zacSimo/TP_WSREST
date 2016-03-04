@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -33,10 +32,15 @@ public class BiblioServelet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    final static String METHOD_GET = "GET";
-    final static String METHOD_POST = "POST";
-    final static String METHOD_PUT = "PUT";
-    final static String METHOD_DELETE = "DELETE";
+    final static String METHOD_GET_LIVRE = "GET (LIVRE)";
+    final static String METHOD_POST_LIVRE = "POST (LIVRE)";
+    final static String METHOD_PUT_LIVRE = "PUT (LIVRE)";
+    final static String METHOD_DELETE_LIVRE = "DELETE (LIVRE)";
+    
+    final static String METHOD_GET_BIBLIO = "GET (BIBLIO)";
+    final static String METHOD_POST_BIBLIO  = "POST (BIBLIO)";
+    final static String METHOD_PUT_BIBLIO  = "PUT (BIBLIO)";
+    final static String METHOD_DELETE_BIBLIO  = "DELETE (BIBLIO)";
     
      @Override
     public void init(ServletConfig config) throws ServletException {
@@ -124,20 +128,32 @@ public class BiblioServelet extends HttpServlet {
         String act = req.getParameter("action");
         PrintWriter pw = resp.getWriter();
         pw.println("Je suis dans SERVICE, Methode recue : "+method+" ACTION : "+act);
-        
+        System.out.println("Je suis dans SERVICE, Methode recue : "+method+" ACTION : "+act);
         switch (act.toUpperCase()) {
-            case METHOD_GET:
+            case METHOD_GET_LIVRE:
                 doGet(req, resp);
                 break;
-            case METHOD_POST:
+            case METHOD_POST_LIVRE:
                 doPost(req, resp);
                 break;
-            case METHOD_PUT:
+            case METHOD_PUT_LIVRE:
                 doPut(req, resp);
                 break;
-            case METHOD_DELETE:
+            case METHOD_DELETE_LIVRE:
                 doDelete(req, resp); 
                 break;
+            case METHOD_GET_BIBLIO:
+                doGet(req, resp);
+                break;
+            case METHOD_POST_BIBLIO:
+                doPost(req, resp);
+                break;
+            case METHOD_PUT_BIBLIO:
+                doPut(req, resp);
+                break;
+            case METHOD_DELETE_BIBLIO:
+                doDelete(req, resp); 
+                break;    
             default:
                 // Servlet doesn't currently support 
                 // other types of request.

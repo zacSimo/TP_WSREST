@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./templatewspage.xhtml">
+
+            <ui:define name="content">
+                <form method="GET" action="BiblioServelet">
+                    <table style="border-spacing: 5px 8px; ">
+                        <tr><td></td><td><h3>RECHERCHE BIBLIOTHEQUE SELON LE CRITERE</h3></td></tr>
+                        <tr></tr>
+                        <tr>
+                            <td>ID Biblio</td>
+                            <td><input type="text" name="idBiblio" size="25" maxlength="30" value=""/></td>
+                            <td><input type="submit" name="idBiblio" value="GET"/></td>
+                        </tr>
+                        <tr>
+                            <td>Nom</td>
+                            <td><input type="text" name="Nom" size="25" maxlength="30" value=""/></td>
+                            <td><input type="submit" name="Nom" value="GET"/></td>
+                        </tr>
+                        <tr>
+                            <td>Adresse</td>
+                            <td><input type="text" name="adresse" size="25" maxlength="30" value=""/></td>
+                            <td><input type="submit" name="adresse" value="GET"/></td>
+                        </tr>
+                        <tr>
+                            <td>Date creation</td>
+                            <td><input type="text" name="Date creation" size="25" maxlength="30" value=""/></td>
+                            <td><input type="submit" name="Date creation" value="GET"/></td>
+                        </tr>
+                     
+                    </table>
+                </form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

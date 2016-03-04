@@ -7,33 +7,31 @@
 
         <ui:composition template="./templatewspage.xhtml">
 
+
             <ui:define name="content">
                 <form method="POST" action="BiblioServelet">
                     <table style="border-spacing: 5px 8px; ">
-                        <tr><td></td><td><h3>INSERER UN NOUVEAU LIVRE</h3></td></tr>
+                        <tr><td></td><td><h3>INSERER LES DONNEES DE MAJ DE LA BIBLIOTHEQUE</h3></td></tr>
                         <tr></tr>
+
                         <tr>
-                            <td>Titre</td>
-                            <td><input type="text" name="titre" size="25" maxlength="30" value=""/></td>
+                            <td>Nom</td>
+                            <td><input type="text" name="Nom" size="25" maxlength="30" value=""/></td>
                         </tr>
                         <tr>
-                            <td>ISBN</td>
-                            <td><input type="text" name="isbn" size="25" maxlength="30" value=""/></td>
+                            <td>Adresse</td>
+                            <td><input type="text" name="adresse" size="25" maxlength="30" value=""/></td>
                         </tr>
                         <tr>
-                            <td>Date parution</td>
-                            <td><input type="text" name="dateParution" size="25" maxlength="30" value=""/></td>
-                        </tr>
-                        <tr>
-                            <td>ID Bibliothèque</td>
-                            <td><input type="text" name="idBibliotheque" size="25" maxlength="30" value=""/></td>
+                            <td>Date creation</td>
+                            <td><input type="text" name="Date creation" size="25" maxlength="30" value=""/></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="POST (livre)" name="action"></input></td>
+                            <td><input type="submit" value="POST (Biblio)" name="action"></input></td>
                         </tr>
                     </table>
-                </form> 
+                </form>
             </ui:define>
 
         </ui:composition>

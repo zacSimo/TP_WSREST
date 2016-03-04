@@ -28,23 +28,23 @@
                         <p:panelMenu style="width:250px">
                             <p:submenu label="Livres Options">
                                 <p:menuitem value="New Livre" outcome="newLivre.xhtml"  icon="ui-icon-disk"/>
-                                <p:menuitem value="Update Livre" outcome="newLivre.xhtml" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Search Livre" outcome="newLivre.xhtml"  icon="ui-icon-search"/>
-                                <p:menuitem value="Delete Livre" outcome="newLivre.xhtml"  icon="ui-icon-close"/>
+                                <p:menuitem value="Update Livre" outcome="updateLivre.xhtml" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Search Livre" outcome="searchLivre.xhtml"  icon="ui-icon-search"/>
+                                <p:menuitem value="Delete Livre" outcome="deleteLivre.xhtml"  icon="ui-icon-close"/>
                                
                             </p:submenu>
                             <p:submenu label="Bibliothèque Options">
-                                <p:menuitem value="New Bibliothèque" url="faces/newLivre.xhtml" icon="ui-icon-disk"/>
-                                <p:menuitem value="Update Bibliothèque" outcome="newLivre.xhtml"  icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Search Bibliothèque" outcome="newLivre.xhtml"  icon="ui-icon-search"/>
-                                <p:menuitem value="Delete Bibliothèque" outcome="newLivre.xhtml" ajax="true" icon="ui-icon-close"/>
+                                <p:menuitem value="New Bibliothèque" outcome="newBibliotheque.xhtml" icon="ui-icon-disk"/>
+                                <p:menuitem value="Update Bibliothèque" outcome="updateBibliotheque.xhtml"  icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Search Bibliothèque" outcome="searchBibliotheque.xhtml"  icon="ui-icon-search"/>
+                                <p:menuitem value="Delete Bibliothèque" outcome="deleteBibliotheque.xhtml" ajax="true" icon="ui-icon-close"/>
                                 
                                 
                             </p:submenu>
                            
                             <p:submenu label="Navigations" >
                                 <p:menuitem value="Homepage" url="faces/index.xhtml" icon="ui-icon-extlink"/>
-                                <p:menuitem value="Logout"  url="faces/index.xhtml" icon="ui-icon-extlink"/>
+                                <p:menuitem value="Logout"  url="faces/login.xhtml" icon="ui-icon-extlink"/>
                             </p:submenu>
                         </p:panelMenu>
                     </h:form>
@@ -55,14 +55,14 @@
                     <ui:insert name="right" >
                         <h:form>
                             <h:panelGrid columns="3" cellpadding="1">
-                                <p:outputLabel for="text1" value="Username " />
+                                <p:outputLabel for="text1" value="Username " /><p:outputLabel value="" /><p:outputLabel value="" />
                                 <p:inputText id="text1" value="#{resetInputView.text1}" required="false" label="Firstname">
                                     <f:validateLength minimum="2" />
                                 </p:inputText>
-                                <p:message for="text1" />
+                                <p:message for="text1" /><p:outputLabel value="" />
 
-                                <p:outputLabel for="text2" value="Password " />
-                                <p:password id="text2" value="#{resetInputView.text2}" required="false" label="Surname" feedback="true" inline="false"/>
+                                <p:outputLabel for="text2" value="Password " /><p:outputLabel value="" /><p:outputLabel value="" />
+                                <p:password id="text2" value="" required="false" label="Surname" feedback="true" inline="false"/>
                                 <p:message for="text2" />
                              
                                 <p:outputLabel value="" />
@@ -72,7 +72,7 @@
                     </ui:insert>
                 </div>
                 <div id="content" class="right_content">
-                    <ui:insert name="content">Content</ui:insert>
+                    <ui:insert name="content">Bibliothèque</ui:insert>
                 </div>
             </div>
         </div>
