@@ -47,7 +47,26 @@
         </div>
       
         <div id="">
-            
+            <br/>
+                    <table>
+                        <thead>
+                            <th>ID BIBLIO</th>
+                            <th>NOM BIBLIO</th>
+                            <th>ADRESSE</th>
+                            <th>DATE CREATION</th>
+                        </thead>
+                        <c:forEach items="${allbiblio}" var="bib">
+                            <tr>
+                                <td>${bib.id}</td>
+                                <td>${bib.nom}</td>
+                                <td>${bib.adresse}</td>
+                                <td>${bib.dateCreation}</td>
+                            </tr> 
+                        </c:forEach>
+                        
+                        
+                        
+                    </table>
         </div>
         <div id=""></div>
         

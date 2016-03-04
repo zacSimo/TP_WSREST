@@ -1,39 +1,148 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
         <ui:composition template="./templatewspage.xhtml">
             
             <ui:define name="content">
-                <form method="POST" action="BiblioServelet">
+            <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.9.0/validate.min.js">
+                    function chekISBN(){
+                        var isbn=document.getElementsByName("isbn")[0].value;
+                        return validator.isISBN(isbn);
+                    }  
+                    
+                    function checkDateB(){
+                        var d=document.getElementsByName("dateCreation")[0].value;
+                        validator.isDate(d);
+                    }
+                    function checkDate() {
+                    // Cette fonction vérifie le format JJ/MM/AAAA saisi et la validité de la date.
+                    // Le séparateur est défini dans la variable separateur
+                    var d=document.getElementsByName("dateCreation")[0].value;
+                    var amin=1800; // année mini
+                    var amax=2016; // année maxi
+                    var separateur="/"; // separateur entre jour/mois/annee
+                    var j=(d.substring(0,2));
+                    var m=(d.substring(3,5));
+                    var a=(d.substring(6));
+                    var ok=1;
+                    console.log("DANS CHECKDATE : "+d.toString());
+                    if( ((isNaN(parseInt(j)))||(j &lt; 1)||(j &gt; 31)) &amp;&amp; (ok===1)) {
+                       alert("Le jour n'est pas correct."); ok=0;
+                    }
+                    if ( ((isNaN(parseInt(m)))||(m &lt; 1)||(m &gt; 12)) &amp;&amp; (ok===1) ) {
+                       alert("Le mois n'est pas correct."); ok=0;
+                    }
+                    if ( ((isNaN(a))||(a &lt; amin)||(a &gt; amax)) &amp;&amp; (ok===1) ) {
+                       alert("L'année n'est pas correcte."); ok=0;
+                    }
+                    if ( ((d.substring(2,3)!==separateur)||(d.substring(5,6)!==separateur)) &amp;&amp; (ok===1) ) {
+                       alert("Les séparateurs doivent être des "+separateur); ok=0;
+                    }
+                    if (ok===1) {
+                       var d2=new Date(a,m-1,j);
+                       j2=d2.getDate();
+                       m2=d2.getMonth()+1;
+                       a2=d2.getFullYear();
+                       if (a2 &lt;=100) {a2=1950+a2;}
+                       if ( (j!==j2)||(m!==m2)||(a!==a2) ) {
+                          alert("La date "+d+" n'existe pas !");
+                          ok=0;
+                       }
+                    }
+                    return ok;
+                 }
+                </script>
+                <form method="POST" action="BiblioServelet" >
                     <table style="border-spacing: 5px 8px; ">
                         <tr><td></td><td><h3>CREER UNE NOUVELLE BIBLIOTHEQUE</h3></td></tr>
                         <tr></tr>
 
                         <tr>
                             <td>Nom</td>
-                            <td><input type="text" name="Nom" size="25" maxlength="30" value=""/></td>
+                            <td><input type="text" name="nomBiblio" size="25" maxlength="30" value="${biblio.nomBiblio}"/></td>
                         </tr>
                         <tr>
                             <td>Adresse</td>
-                            <td><input type="text" name="adresse" size="25" maxlength="30" value=""/></td>
+                            <td><input type="text" name="adresse" size="25" maxlength="30" value="${biblio.adresse}"/></td>
                         </tr>
                         <tr>
-                            <td>Date creation</td>
-                            <td><input type="text" name="Date creation" size="25" maxlength="30" value=""/></td>
+                            <td>Date creation (format JJ/MM/AAAA)</td>
+                            <td><input type="text" name="dateCreation" size="25" maxlength="30" value="${biblio.dateCreation}" onchange="return checkDate();"/></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="POST (Biblio)" name="action"></input></td>
+                            <td><input type="submit" value="POST (Biblio)" name="action" ></input></td>
                         </tr>
                     </table>
+<!--                    <br/>
+                    <table>
+                        <thead>
+                            <th>ID BIBLIO</th>
+                            <th>NOM BIBLIO</th>
+                            <th>ADRESSE</th>
+                            <th>DATE CREATION</th>
+                        </thead>
+                        <c:forEach items="${allbiblio}" var="bib">
+                            <tr>
+                                <td>${bib.id}</td>
+                                <td>${bib.nom}</td>
+                                <td>${bib.adresse}</td>
+                                <td>${bib.dateCreation}</td>
+                            </tr> 
+                        </c:forEach>
+                        
+                        
+                        
+                    </table>-->
                 </form>
+                
             </ui:define>
+            <f:view>
+
+
+                <h:form>
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable value="#{BiblioServelet.java}" var="item">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nom"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Adresse"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DateCreation"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateCreation}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </f:view>
 
         </ui:composition>
-
+    
     </body>
+   
 </html>

@@ -35,14 +35,14 @@ public class Bibliotheque implements Serializable {
 
     public Bibliotheque() {
         
-    }
+    }  
 
-//    public Bibliotheque(String nom, String adresse, Date dateCreation, List<Livre> livres) {
-//        this.nom = nom;
-//        this.adresse = adresse;
-//        this.dateCreation = dateCreation;
-//        this.livres = livres;
-//    }
+    public Bibliotheque(String nom, String adresse, Date dateCreation) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.dateCreation = dateCreation;
+       
+    }
     
     public String getNom() {
         return nom;

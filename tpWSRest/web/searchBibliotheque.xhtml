@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -14,27 +15,50 @@
                         <tr></tr>
                         <tr>
                             <td>ID Biblio</td>
-                            <td><input type="text" name="idBiblio" size="25" maxlength="30" value=""/></td>
-                            <td><input type="submit" name="idBiblio" value="GET"/></td>
+                            <td><input type="text" name="idBibliotheque" size="25" maxlength="30" value="${biblio.idBibliotheque}"/></td>
+                            <td><input type="submit" name="action" value="GET (Biblio)"/></td>
                         </tr>
                         <tr>
                             <td>Nom</td>
-                            <td><input type="text" name="Nom" size="25" maxlength="30" value=""/></td>
-                            <td><input type="submit" name="Nom" value="GET"/></td>
+                            <td><input type="text" name="nomBilio" size="25" maxlength="30" value="${biblio.nomBilio}"/></td>
+<!--                            <td><input type="submit" name="nomBilio" value="GET (Biblio)"/></td>-->
                         </tr>
                         <tr>
                             <td>Adresse</td>
-                            <td><input type="text" name="adresse" size="25" maxlength="30" value=""/></td>
-                            <td><input type="submit" name="adresse" value="GET"/></td>
+                            <td><input type="text" name="adresse" size="25" maxlength="30" value="${biblio.adresse}"/></td>
+<!--                            <td><input type="submit" name="adresse" value="GET (Biblio)"/></td>-->
                         </tr>
                         <tr>
                             <td>Date creation</td>
-                            <td><input type="text" name="Date creation" size="25" maxlength="30" value=""/></td>
-                            <td><input type="submit" name="Date creation" value="GET"/></td>
+                            <td><input type="text" name="dateCreation" size="25" maxlength="30" value="${biblio.dateCreation}"/></td>
+                            
                         </tr>
-                     
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" name="action" value="GET (Biblio)"/></td>
+                        </tr>
                     </table>
                 </form>
+                <br/>
+                    <table>
+                        <thead>
+                            <th>ID BIBLIO</th>
+                            <th>NOM BIBLIO</th>
+                            <th>ADRESSE</th>
+                            <th>DATE CREATION</th>
+                        </thead>
+                        <c:forEach items="${allbiblio}" var="bib">
+                            <tr>
+                                <td>${bib.id}</td>
+                                <td>${bib.nom}</td>
+                                <td>${bib.adresse}</td>
+                                <td>${bib.dateCreation}</td>
+                            </tr> 
+                        </c:forEach>
+                        
+                        
+                        
+                    </table>
             </ui:define>
 
         </ui:composition>

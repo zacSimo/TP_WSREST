@@ -33,17 +33,19 @@ public class Livre implements Serializable {
     @OneToOne
     private Bibliotheque bibliotheque;
 
-//    public Livre(String titre, String auteurs, String isbn, Date dateParution, Bibliotheque bibliotheque) {
-//        this.titre = titre;
-//        this.auteurs = auteurs;
-//        this.isbn = isbn;
-//        this.dateParution = dateParution;
-//        this.bibliotheque = bibliotheque;
-//    }
+    public Livre(String titre, String auteurs, String isbn, Date dateParution, Bibliotheque bibliotheque) {
+        this.titre = titre;
+        this.auteurs = auteurs;
+        this.isbn = isbn;
+        this.dateParution = dateParution;
+        this.bibliotheque = bibliotheque;
+    }
 
     public Livre() {
         
     }
+
+   
     
      public String getTitre() {
         return titre;

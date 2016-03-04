@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+
 /**
  *
  * @author Zac
@@ -71,7 +72,7 @@ public class BiblioSessionBean implements LivreDAO, BibliothequeDAO{
 
     @Override
     public List<Bibliotheque> getAllBibliotheques() {
-        Query q = em.createNamedQuery("SELECT b FROM Bibliotheque b");
+        Query q = em.createNamedQuery("select * from DBWSREST.BIBLIOTHEQUE;");
         return q.getResultList();
     }
 
