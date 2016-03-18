@@ -8,12 +8,14 @@ package dao;
 import entities.Bibliotheque;
 import java.util.List;
 import javax.ejb.Local;
+import javax.inject.Named;
 
 /**
  *
  * @author Zac
  */
 @Local
+@Named(value = "bibliothequeDao")
 public interface BibliothequeDAO {
      // POST -- insert new Bibliotheque
     public void postBibliotheque(Bibliotheque bibliotheque);

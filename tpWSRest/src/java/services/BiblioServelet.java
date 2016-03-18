@@ -12,6 +12,7 @@ import entities.Bibliotheque;
 import entities.Livre;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -189,15 +190,38 @@ public class BiblioServelet extends HttpServlet {
                 idBiblio = new Integer(request.getParameter("idBibliotheque"));
                 nomBiblio = request.getParameter("nomBiblio");
                 adresse = request.getParameter("adresse");
-                dateCreation = new Date(request.getParameter("dateCreation"));
-                bib = new Bibliotheque(nomBiblio, adresse, dateCreation);
-                bib.setId(idBiblio);
-                if(bibliothequeDao.getBibliotheque(idBiblio)!=null){
-                    bibliothequeDao.putBibliotheque(bib);
-                    out.println("Servlet BiblioServelet at " + request.getContextPath()+" Bibliotheque MAJ : "+bib.getNom());
-                
-                }
+                String date = request.getParameter("dateCreation");
+                bib = bibliothequeDao.getBibliotheque(idBiblio);
+                if(bib != null){  
+                    
+                   if(!request.getParameter("nomBiblio").isEmpty())
+                       bib.setNom(nomBiblio);     
+                   if(!request.getParameter("adresse").isEmpty())
+                       bib.setAdresse(adresse);
+                   if(!request.getParameter("dateCreation").isEmpty()){ 
+                       try{
+                           bib.setDateCreation(new Date(date));
+                       }catch(IllegalArgumentException ille){
+                           out.println(ille.getMessage());
+                       }
+                   }
+                   bibliothequeDao.putBibliotheque(bib);
+                }else{
                     out.println("Servlet BiblioServelet at " + request.getContextPath()+" Bibliotheque INNEXHISTANTE : "+bib.getNom());
+                }
+                
+//                else if((date==null) && (adresse==null)){
+//                    bib = new Bibliotheque(nomBiblio);
+//                }else if(date==null) bib = new Bibliotheque(nomBiblio, adresse);
+//                dateCreation = new Date(request.getParameter("dateCreation"));
+//                bib = new Bibliotheque(nomBiblio, adresse, dateCreation);
+//                bib.setId(idBiblio);
+//                if(bibliothequeDao.getBibliotheque(idBiblio)!=null){
+//                    bibliothequeDao.putBibliotheque(bib);
+//                    out.println("Servlet BiblioServelet at " + request.getContextPath()+" Bibliotheque MAJ : "+bib.getNom());
+//                
+//                }
+//                    out.println("Servlet BiblioServelet at " + request.getContextPath()+" Bibliotheque INNEXHISTANTE : "+bib.getNom());
 
                 break;
             case METHOD_DELETE_BIBLIO://suppression bibliotheque

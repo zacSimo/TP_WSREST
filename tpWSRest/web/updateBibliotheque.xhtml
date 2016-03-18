@@ -59,7 +59,7 @@
                         </tr>
                         <tr>
                             <td>Nom</td>
-                            <td><input type="text" name="Nom" size="25" maxlength="30" value="${biblio.nomBiblio}"/></td>
+                            <td><input type="text" name="nomBiblio" size="25" maxlength="30" value="${biblio.nomBiblio}"/></td>
                         </tr>
                         <tr>
                             <td>Adresse</td>
@@ -67,11 +67,11 @@
                         </tr>
                         <tr>
                             <td>Date creation</td>
-                            <td><input type="text" name="Date creation" size="25" maxlength="30" value="${biblio.dateCreation}" onchange="return checkDate();"/></td>
+                            <td><input type="text" name="dateCreation" size="25" maxlength="30" value="${biblio.dateCreation}" onchange="return checkDate();"/></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="POST (Biblio)" name="action"></input></td>
+                            <td><input type="submit" value="PUT (Biblio)" name="action"></input></td>
                         </tr>
                     </table>
                 </form>

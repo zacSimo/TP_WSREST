@@ -44,6 +44,16 @@ public class Bibliotheque implements Serializable {
        
     }
     
+    public Bibliotheque(String nom, String adresse) {
+        this.nom = nom;
+        this.adresse = adresse;   
+    }
+    
+    public Bibliotheque(String nom) {
+        this.nom = nom;
+     
+    }
+    
     public String getNom() {
         return nom;
     }

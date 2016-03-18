@@ -10,6 +10,7 @@ import entities.Livre;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -20,7 +21,7 @@ import javax.persistence.Query;
  * @author Zac
  */
 @Stateless
-
+@Named(value = "biblioSessionBean")
 public class BiblioSessionBean implements LivreDAO, BibliothequeDAO{
 
     // Add business logic below. (Right-click in editor and choose
@@ -74,6 +75,7 @@ public class BiblioSessionBean implements LivreDAO, BibliothequeDAO{
     public List<Bibliotheque> getAllBibliotheques() {
         Query q = em.createNamedQuery("select * from DBWSREST.BIBLIOTHEQUE;");
         return q.getResultList();
+        
     }
 
     @Override

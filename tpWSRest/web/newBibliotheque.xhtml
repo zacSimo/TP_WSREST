@@ -103,43 +103,9 @@
                         
                     </table>-->
                 </form>
-                
+
             </ui:define>
-            <f:view>
-
-
-                <h:form>
-                    <h1><h:outputText value="List"/></h1>
-                    <p:dataTable value="#{BiblioServelet.java}" var="item">
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nom"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nom}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Adresse"/>
-                            </f:facet>
-                            <h:outputText value="#{item.adresse}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="DateCreation"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dateCreation}">
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Id"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </p:column>
-                    </p:dataTable>
-                </h:form>
-            </f:view>
+            
 
         </ui:composition>
     
